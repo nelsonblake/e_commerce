@@ -8,8 +8,7 @@ import {
   Menu,
   Typography,
 } from '@material-ui/core';
-import { ShoppingCart } from '@material-ui/icons';
-import { mergeClasses } from '@material-ui/styles';
+import { ShoppingCart, Home } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../../assets/logo.png';
@@ -22,26 +21,26 @@ const Navbar = ({ totalItems }) => {
 
   return (
     <div>
-      <AppBar position="fixed" className={mergeClasses.appBar} color="inherit">
+      <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography
-            component={Link}
-            to="/"
-            variant="h6"
+            variant="h5"
             className={classes.title}
             color="inherit"
+            component={Link}
+            to="/"
           >
             <img
               src={logo}
               alt="Commerce.js"
               height="25px"
-              className={mergeClasses.image}
+              className={classes.image}
             />
             E Commerce Project
           </Typography>
           <div className={classes.grow} />
           {/* hide cart button when looking at the cart */}
-          {location.pathname === '/' && (
+          {location.pathname === '/' ? (
             <div className={classes.button}>
               <IconButton
                 component={Link}
@@ -51,7 +50,22 @@ const Navbar = ({ totalItems }) => {
               >
                 {/* equal to number of items, this will come dynamicaly later */}
                 <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart />
+                  {location.pathname === '/' ? <ShoppingCart /> : <Home />}
+                </Badge>
+              </IconButton>
+            </div>
+          ) : (
+            // show home button when cart button is hidden
+            <div className={classes.button}>
+              <IconButton
+                component={Link}
+                to="/"
+                aria-label="Show cart items"
+                color="inherit"
+              >
+                {/* equal to number of items, this will come dynamicaly later */}
+                <Badge badgeContent={totalItems} color="secondary">
+                  <Home />
                 </Badge>
               </IconButton>
             </div>

@@ -13,6 +13,7 @@ import useStyles from './styles';
 
 const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
+  // used to control when we are hovering over a card
   const [hover, setHover] = useState(false);
 
   return (
