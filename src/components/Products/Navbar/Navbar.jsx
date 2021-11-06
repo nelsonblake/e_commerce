@@ -10,36 +10,52 @@ import {
 } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { mergeClasses } from '@material-ui/styles';
+import { Link, useLocation } from 'react-router-dom';
 
-import logo from '../../../assets/e-commerce-icon-4.jpg';
+import logo from '../../../assets/logo.png';
 
 import useStyles from './styles';
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
   const classes = useStyles();
+  const location = useLocation();
 
   return (
     <div>
       <AppBar position="fixed" className={mergeClasses.appBar} color="inherit">
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="inherit">
+          <Typography
+            component={Link}
+            to="/"
+            variant="h6"
+            className={classes.title}
+            color="inherit"
+          >
             <img
               src={logo}
               alt="Commerce.js"
               height="25px"
               className={mergeClasses.image}
             />
-            My Shop
+            E Commerce Project
           </Typography>
           <div className={classes.grow} />
-          <div className={classes.button}>
-            <IconButton aria-label="Show cart items" color="inherit">
-              {/* equal to number of items, this will come dynamicaly later */}
-              <Badge badgeContent={2} color="secondary">
-                <ShoppingCart />
-              </Badge>
-            </IconButton>
-          </div>
+          {/* hide cart button when looking at the cart */}
+          {location.pathname === '/' && (
+            <div className={classes.button}>
+              <IconButton
+                component={Link}
+                to="/cart"
+                aria-label="Show cart items"
+                color="inherit"
+              >
+                {/* equal to number of items, this will come dynamicaly later */}
+                <Badge badgeContent={totalItems} color="secondary">
+                  <ShoppingCart />
+                </Badge>
+              </IconButton>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
