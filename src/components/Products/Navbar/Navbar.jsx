@@ -49,7 +49,7 @@ const Navbar = ({ totalItems }) => {
                 color="inherit"
               >
                 {/* equal to number of items, this will come dynamicaly later */}
-                <Badge badgeContent={totalItems} color="secondary">
+                <Badge badgeContent={totalItems} color="primary">
                   {location.pathname === '/' ? <ShoppingCart /> : <Home />}
                 </Badge>
               </IconButton>
@@ -64,7 +64,7 @@ const Navbar = ({ totalItems }) => {
                 color="inherit"
               >
                 {/* equal to number of items, this will come dynamicaly later */}
-                <Badge badgeContent={totalItems} color="secondary">
+                <Badge badgeContent={totalItems} color="primary">
                   <Home />
                 </Badge>
               </IconButton>
