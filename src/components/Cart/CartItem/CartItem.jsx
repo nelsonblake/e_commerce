@@ -45,7 +45,7 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
           </Button>
         </div>
         <Button
-          variant="contained"
+          variant="outlined"
           type="button"
           color="secondary"
           onClick={() => onRemoveFromCart(item.id)}

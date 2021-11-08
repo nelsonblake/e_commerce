@@ -63,8 +63,7 @@ const Navbar = ({ totalItems }) => {
                 aria-label="Show cart items"
                 color="inherit"
               >
-                {/* equal to number of items, this will come dynamicaly later */}
-                <Badge badgeContent={totalItems} color="primary">
+                <Badge color="primary">
                   <Home />
                 </Badge>
               </IconButton>
